@@ -1,0 +1,15 @@
+<h1>{{title}}</h1>
+<div>
+    <label for=name>Name</label>
+    <input id="name" type="text" [(ngModel)]="register.name" required placeholder="Name" />
+    <br/>
+    <label for="email">E-mail</label>
+    <input id="email" type="text" [(ngModel)]="register.email" required placeholder="E-mail">
+</div>
+<div>
+    <button (click)="save(register)">Save</button>
+    <button (click)="delete(register)">Delete</button>
+    <button (click)="newRegister()">New</button>
+</div>
+
+<app-register-datail *ngFor="let item of registers" [register]="item" (selected)="selected(item)"></app-register-datail>
