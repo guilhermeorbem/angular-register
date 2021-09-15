@@ -35,8 +35,10 @@ export class RegisterService {
   }
 
   deleteRegister(register: Register): Observable<Register[]> {
-    this.register = this.register.filter(item => item.name !== register.name);
-    return of(this.register);
+    return of(this.register.filter(item => {
+      return item.id != register.id
+    }));
+
   }
 
   constructor() { }
