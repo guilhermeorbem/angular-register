@@ -50,7 +50,10 @@ export class RegisterComponent implements OnInit {
     this.getRegisters();
   }
   delete(register: Register): void {
-    this.regiterService.deleteRegister(register);
+    this.regiterService.deleteRegister(register).subscribe(retorno => {
+      this.registers = retorno;
+      this.newRegister();
+    });
   }
   constructor(
     private regiterService: RegisterService

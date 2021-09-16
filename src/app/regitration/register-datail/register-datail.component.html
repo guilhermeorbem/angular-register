@@ -1,3 +1,5 @@
-{{register.id}}{{register.name}} {{register.email}}
-<input type="checkbox" (click)="onSelected(register)" />
-<br/>
+<div class="row" (click)="onSelected(register)">
+    <div class="col"> {{register.id}}</div>
+    <div class="col">{{register.name}}</div>
+    <div class="col"> {{register.email}}</div>
+</div>

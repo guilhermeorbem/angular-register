@@ -1,15 +1,22 @@
-<h1>{{title}}</h1>
-<div>
-    <label for=name>Name</label>
-    <input id="name" type="text" [(ngModel)]="register.name" required placeholder="Name" />
-    <br/>
-    <label for="email">E-mail</label>
-    <input id="email" type="text" [(ngModel)]="register.email" required placeholder="E-mail">
-</div>
-<div>
-    <button (click)="save(register)">Save</button>
-    <button (click)="delete(register)">Delete</button>
-    <button (click)="newRegister()">New</button>
-</div>
+<form>
+    <div class="container ">
+        <div class="row">
+            <h1>{{title}}</h1>
+        </div>
+        <div class="row mb-2 g-0">
+            <label for=name class="form-label">Name</label>
+            <input id="name" type="text" name="name" [(ngModel)]="register.name" required placeholder="Name" class="form-control" />
 
-<app-register-datail *ngFor="let item of registers" [register]="item" (selected)="selected(item)"></app-register-datail>
+            <label for="email" class="form-label">E-mail</label>
+            <input id="email" type="text" name="email" [(ngModel)]="register.email" required placeholder="E-mail" class="form-control">
+        </div>
+        <div class=" row mb-3 g-0">
+            <button type="button" id="save" (click)="save(register)" class="btn btn-success">Save</button>
+            <button type="button" id="delete" (click)="delete(register)" class="btn btn-danger">Delete</button>
+            <button type="button" id="new" (click)="newRegister()" class="btn btn-primary">New</button>
+        </div>
+
+        <app-register-datail *ngFor="let item of registers" [register]="item" (selected)="selected(item)">
+        </app-register-datail>
+    </div>
+</form>
