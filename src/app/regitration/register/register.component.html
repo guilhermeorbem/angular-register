@@ -16,7 +16,7 @@
             <button type="button" id="new" (click)="newRegister()" class="btn btn-primary">New</button>
         </div>
 
-        <app-register-datail *ngFor="let item of registers" [register]="item" (selected)="selected(item)">
+        <app-register-datail [registers]="registers" (selected)="selected($event)">
         </app-register-datail>
     </div>
 </form>

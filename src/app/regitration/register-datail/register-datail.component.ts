@@ -10,7 +10,7 @@ import { RegisterService } from 'src/app/services/register.service';
 })
 export class RegisterDatailComponent {
 
-  @Input() register!: Register;
+  @Input() registers!: Register[];
   @Output() selected = new EventEmitter<Register>();
 
   onSelected(register: Register) {

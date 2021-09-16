@@ -1,5 +1,22 @@
-<div class="row" (click)="onSelected(register)">
-    <div class="col"> {{register.id}}</div>
-    <div class="col">{{register.name}}</div>
-    <div class="col"> {{register.email}}</div>
-</div>
+<table class="table table-striped">
+    <thead>
+        <th> ID</th>
+        <th>Name</th>
+        <th>E-mail</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let register of registers" (click)="onSelected(register)">
+
+            <td>
+                <div> {{register.id}}</div>
+            </td>
+            <td>
+                <div>{{register.name}}</div>
+            </td>
+            <td>
+                <div> {{register.email}}</div>
+            </td>
+
+        </tr>
+    </tbody>
+</table>
