@@ -1,45 +1,55 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Register, } from '../interfaces/register';
+import { Register } from '../models/register';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegisterService {
 
-  register: Register[] =
-    [{ id: 1, name: "Teste1", email: "teste1@teste.com.br" },
-    { id: 2, name: "Teste2", email: "teste2@teste.com.br" },
-    { id: 3, name: "Teste3", email: "teste3@teste.com.br" }];
+  registers: Register[] = [];
 
-  getRegisters(): Observable<Register[]> {
-    const register = of(this.register);
-    return register;
+  gerarRegistros() {
+    for (let i: number = 0; i < 10; i++) {
+      let register: Register = {
+        id: i,
+        name: "Test" + i,
+        email: "test" + i + "@teste.com.ber",
+        city: { id: 1200013, nome: "Acrelândia", uf: { id: 12, nome: "Acre", sigla: "AC" } }
+      };
+      this.registers.push(register);
+    }
+  }
+  //gerarRegistros();
+  getRegisters(): Observable<any> {
+    if (this.registers.length <= 0)
+      this.gerarRegistros();
+    return of(this.registers);
   }
 
-  addRegister(register: Register): Observable<Register[]> {
-    register.id = this.register.length + 1;
-    this.register.push(register);
-    return of(this.register);
+
+  addRegister(register: Register): Observable<any> {
+    register.id=this.registers.length;
+    this.registers.push(register);
+    return of(this.registers);
 
   }
 
   updateRegister(register: Register): Observable<boolean> {
-    let index = this.register.findIndex(item => item.id === register.id);
+    let index = this.registers.findIndex(item => item.id === register.id);
     if (index >= 0) {
-      this.register[index] = register;
+      this.registers[index] = register;
       return of(true);
     } else {
       return of(false);
     }
   }
 
-  deleteRegister(register: Register): Observable<Register[]> {
-    return of(this.register.filter(item => {
+  deleteRegister(register: Register): Observable<any> {
+    return of(this.registers.filter(item => {
       return item.id != register.id
     }));
 
   }
 
-  constructor() { }
 }

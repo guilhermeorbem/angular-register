@@ -10,12 +10,27 @@
             <label for="email" class="form-label">E-mail</label>
             <input id="email" type="text" name="email" [(ngModel)]="register.email" required placeholder="E-mail" class="form-control">
         </div>
+        <div class="row mb-2">
+            <div class="col-3">
+                <label for="state" class="form-label">State</label>
+                <select id="state" class="form-select" [(ngModel)]="register.city.uf.id" name="state" (change)="getCity($event)">
+                    <option value="0"> Select a state</option>
+                    <option *ngFor="let state of states" [value]="state.id">{{state.nome}}</option>
+                </select>
+            </div>
+            <div class="col-9">
+                <label for="city" class="form-label">City</label>
+                <select id-="city" class="form-select" [(ngModel)]="register.city.id" name="city">
+                    <option [ngValue]="0">Select a city</option>
+                    <option *ngFor="let city of citys" [ngValue]="city.id">{{city.nome}}</option>
+                </select>
+            </div>
+        </div>
         <div class=" row mb-3 g-0">
             <button type="button" id="save" (click)="save(register)" class="btn btn-success">Save</button>
             <button type="button" id="delete" (click)="delete(register)" class="btn btn-danger">Delete</button>
             <button type="button" id="new" (click)="newRegister()" class="btn btn-primary">New</button>
         </div>
-
         <app-register-datail [registers]="registers" (selected)="selected($event)">
         </app-register-datail>
     </div>

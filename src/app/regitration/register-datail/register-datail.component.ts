@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Register } from 'src/app/interfaces/register';
+import { Register } from 'src/app/models/register';
 import { RegisterService } from 'src/app/services/register.service';
 
 
